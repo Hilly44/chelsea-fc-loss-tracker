@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Chelsea FC Loss Tracker</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; padding: 50px; background-color: #f4f4f4; }
+    #clock { font-size: 3em; color: #034694; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Chelsea FC Estimated Losses Since March 2022</h1>
+  <div id="clock">£0.00</div>
+
+  <script>
+    const baseLoss = 1100000000; // Starting from £1.1 billion
+    const startDate = new Date('2025-08-08T00:00:00Z'); // Adjust as needed
+    const ratePerSecond = 500; // £500 per second (adjustable)
+
+    function updateClock() {
+      const now = new Date();
+      const elapsed = (now - startDate) / 1000;
+      const loss = baseLoss + ratePerSecond * elapsed;
+      document.getElementById('clock').innerText =
+        '£' + loss.toLocaleString(undefined, {maximumFractionDigits: 0});
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+</html>
